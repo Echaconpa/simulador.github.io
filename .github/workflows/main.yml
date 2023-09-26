@@ -32,4 +32,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: FISICA  # Directorio que contiene tus archivos HTML, CSS, etc.
+          publish_dir: simulador.github.io
+  # Directorio que contiene tus archivos HTML, CSS, etc.
