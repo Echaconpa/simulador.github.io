@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Simulador de Onda</title>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+        <h1>Simulador de Onda</h1>
+    </header>
+    <div class="form-container">
+        <form method="POST">
+            <label for="amplitud">Amplitud (cm):</label>
+            <div class="range-container">
+                <button type="button" class="range-button" id="decreaseAmplitud">-</button>
+                <input type="range" name="amplitud" id="amplitudRange" min="0" max="200" value="0">
+                <button type="button" class="range-button" id="increaseAmplitud">+</button>
+            </div>
+            <input type="text" name="amplitudInput" id="amplitudInput" placeholder="Amplitud" value="0"><br>
+
+            <label for="frecuencia">Frecuencia (Hz):</label>
+            <div class="range-container">
+                <button type="button" class="range-button" id="decreaseFrecuencia">-</button>
+                <input type="range" name="frecuencia" id="frecuenciaRange" min="0.01" max="1" step="0.01" value="0.01">
+                <button type="button" class="range-button" id="increaseFrecuencia">+</button>
+            </div>
+            <input type="text" name="frecuenciaInput" id="frecuenciaInput" placeholder="Frecuencia" value="0.01"><br>
+
+            <label for="velocidad">Velocidad:</label>
+            <div class="range-container">
+                <button type="button" class="range-button" id="decreaseVelocidad">-</button>
+                <input type="range" name="velocidad" id="velocidadRange" min="0.01" max="1" step="0.01" value="0.01">
+                <button type="button" class="range-button" id="increaseVelocidad">+</button>
+            </div>
+            <input type="text" name="velocidadInput" id="velocidadInput" placeholder="Velocidad" value="0.01"><br>
+            <p>
+            <input type="button" value="Iniciar Simulación" id="startSimulation">
+            <input type="button" value="Limpiar Tabla" id="clearTable">
+            </p>
+        </form>
+    </div>
+    <div class="formula-card">
+        <div class="card-content">
+            <h3>Fórmula para calcular la longitud de onda:</h3>
+            <p>Longitud de onda (λ) = Velocidad (v) / Frecuencia (f)</p>
+        </div>
+    </div>
+    <hr>
+    <h2>Resultado de la simulación:</h2>
+    <canvas id="canvas" width="800" height="400"></canvas>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Amplitud</th>
+                    <th>Frecuencia</th>
+                    <th>Velocidad</th>
+                    <th>Longitud de Onda</th>
+                </tr>
+            </thead>
+            <tbody id="resultTableBody">
+            </tbody>
+        </table>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <footer>
+        <p>Copyright © Alexandro Pajuelo and Ariana Reyes</p>
+    </footer>
+</body>
+</html>

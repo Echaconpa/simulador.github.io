@@ -1,0 +1,32 @@
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <div class="login-container">
+        <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" class="logo">
+        <div class="card">
+            <h1>Iniciar Sesión</h1>
+            <form method="POST">
+                <div class="input-container">
+                    <label for="username">Nombre de Usuario:</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="input-container">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" name="password" required>
+                </div>
+                <input type="submit" value="Iniciar Sesión">
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>Copyright © Alexandro Pajuelo and Ariana Reyes</p>
+    </footer>
+</body>
+</html>
