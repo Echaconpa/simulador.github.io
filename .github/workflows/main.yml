@@ -1,32 +1,35 @@
-name: Deploy to GitHub Pages
+name: Build and Deploy
 
 on:
   push:
     branches:
-      - main  # Cambia 'main' al nombre de tu rama principal si es diferente
+      - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
 
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'  # Cambia a la versión de Python que necesites
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Elige la versión de Python que necesitas
 
+    - name: Install dependencies
+      run: |
+        pip install mkdocs
+        pip install mkdocs-material  # Opcional: instala un tema de mkdocs
+      working-directory: ./
+
+    - name: Build site
+      run: mkdocs build --clean
+      working-directory: ./
     
-
-      - name: Build and deploy
-        run: |
-          mkdocs build --clean
-        working-directory: ./  # La carpeta principal del proyecto es la raíz del repositorio
-
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3  # Cambia a la versión más reciente disponible
-        with:
-          deploy_key: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./site  # Carpeta donde MkDocs genera el sitio
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v4
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./site  # Directorio donde mkdocs generó la documentación
