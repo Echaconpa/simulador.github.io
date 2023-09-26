@@ -20,7 +20,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd FISICA  # Cambia al directorio FISICA
+          cd simulador.github.io  # Cambia al directorio FISICA
           pip install -r requirements.txt
 
       - name: Build site
